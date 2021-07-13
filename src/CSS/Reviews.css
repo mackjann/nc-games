@@ -1,0 +1,60 @@
+.header_title {
+  padding-left: 350px;
+}
+
+.review_img {
+  max-width: 400px;
+}
+.review_list {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  padding-left: 350px;
+  padding-right: 350px;
+}
+
+.review_card {
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+@media screen and (max-width: 600px) {
+  .review_list {
+    columns: 1;
+    -webkit-columns: 1;
+    -moz-columns: 1;
+    padding-left: 5pc;
+    padding-right: 5pc;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Container for flexboxes */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create two equal columns */
+.column {
+  flex: 50%;
+  padding: 20px;
+}
+
+/* On screens that are 992px wide or less, go from two columns to one column */
+@media screen and (max-width: 992px) {
+  .column {
+    flex: 100%;
+  }
+}
+
+/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+}

@@ -1,9 +1,10 @@
-import "./App.css";
+import "./CSS/Nav.css";
+import "./CSS/Reviews.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Reviews from "./components/Reviews";
-import Categories from "./components/Header";
+import Categories from "./components/Categories";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import ChangeUser from "./components/ChangeUser";
