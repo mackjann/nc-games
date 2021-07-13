@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Reviews from "./components/Reviews";
+import ReviewById from "./components/ReviewById";
 import Categories from "./components/Categories";
 import About from "./components/About";
 import Contact from "./components/Contact";
@@ -17,6 +18,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route path="/reviews/:reviewID">
+            <ReviewById />
           </Route>
           <Route exact path="/reviews">
             <Reviews />
