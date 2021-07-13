@@ -6,7 +6,7 @@ const Header = () => {
     <div class="nav">
       <input type="checkbox" id="nav-check"></input>
       <div class="nav-header">
-        <div class="nav-title">
+        <div id="nav-title-id" class="nav-title">
           <Link to="/">nc-games</Link>
         </div>
       </div>
@@ -17,25 +17,22 @@ const Header = () => {
           <span></span>
         </label>
       </div>
-
-      <ul class="nav-links">
-        <li>
-          <Link to="/reviews">Reviews</Link>
-        </li>
-        <li>
-          <Link to="/categories">Categories</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/contact">Contact</Link>
-        </li>
-        <li>
-          <Link to="/change-user">Change User</Link>
-        </li>
-        <li>logged in as: default</li>
-      </ul>
+      <div className="nav-links-box">
+        <ul class="nav-links" id="nav-links-id">
+          <li>
+            <Link to="/reviews">Reviews</Link>
+          </li>
+          <li>
+            <Link to="/categories">Categories</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/change-user">Change User</Link>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };
