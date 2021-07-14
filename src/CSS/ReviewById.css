@@ -1,0 +1,18 @@
+.review_by_id_card {
+  page-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  width: 80vw;
+  display: flex;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.review_by_id_img {
+  display: flex;
+  position: relative;
+  width: 50vw;
+}

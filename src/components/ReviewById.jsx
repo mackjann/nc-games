@@ -14,14 +14,14 @@ const ReviewById = () => {
   }, [reviewID]);
 
   return (
-    <div className="row">
+    <div className="big_box">
       <h1 className="header_title">Reviews</h1>
       <ul className="review_list">
-        <div className="review_card">
+        <div>
           <div className="column">
-            <li key={review.review_id}>
+            <li key={review.review_id} className="review_by_id_card">
               <img
-                className="review_img"
+                className="review_by_id_img"
                 src={review.review_img_url}
                 alt={review.title}
               ></img>

@@ -17,7 +17,7 @@ const Categories = () => {
       <ul>
         {categories.map((category) => {
           return (
-            <li key={category.slug}>
+            <li key={category.slug} className="category_card">
               {/*could do something here like img="{slug}.png?"*/}
               <h2>{category.slug}</h2>
               <p>{category.description}</p>

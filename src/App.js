@@ -1,5 +1,8 @@
 import "./CSS/Nav.css";
 import "./CSS/Reviews.css";
+import "./CSS/ReviewById.css";
+import "./CSS/Categories.css";
+
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
