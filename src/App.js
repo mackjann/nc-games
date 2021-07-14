@@ -2,6 +2,7 @@ import "./CSS/Nav.css";
 import "./CSS/Reviews.css";
 import "./CSS/ReviewById.css";
 import "./CSS/Categories.css";
+import "./CSS/Comments.css";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
@@ -22,11 +23,13 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/reviews/:category">
-            <ReviewsByCat />
-          </Route>
+
           <Route path="/reviews/:reviewID">
             <ReviewById />
+          </Route>
+
+          <Route path="/categories/:category">
+            <ReviewsByCat />
           </Route>
           <Route exact path="/reviews">
             <Reviews />

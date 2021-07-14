@@ -2,14 +2,23 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getReviewsById } from "../utils/api";
+import Expandable from "./Expandable";
+import { getComments } from "../utils/api";
 
 const ReviewById = () => {
   const [review, setReview] = useState([]);
   const { reviewID } = useParams();
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     getReviewsById(reviewID).then((reviewsFromApi) => {
       setReview(reviewsFromApi);
+    });
+  }, [reviewID]);
+
+  useEffect(() => {
+    getComments(reviewID).then((commentsFromApi) => {
+      setComments(commentsFromApi);
     });
   }, [reviewID]);
 
@@ -34,7 +43,26 @@ const ReviewById = () => {
               <p>{review.review_body}</p>
               <label>Votes: {review.votes}</label>
               <button>Upvote</button>
-              <p>Comments: {review.comment_count}</p>
+              <Expandable>
+                <ul className="comment_list">
+                  {comments.map((comment) => {
+                    return (
+                      <div className="comment_card">
+                        <li key={comment.comment_id}>
+                          <p>{comment.body}</p>
+                          <p>
+                            Posted by {comment.author} at {comment.created_at}
+                          </p>
+                          <p>Likes: {comment.votes}</p>
+                          <p>
+                            {comment.owner} || {comment.created_at}{" "}
+                          </p>
+                        </li>
+                      </div>
+                    );
+                  })}
+                </ul>
+              </Expandable>
             </li>
           </div>
         </div>

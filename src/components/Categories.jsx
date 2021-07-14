@@ -19,7 +19,7 @@ const Categories = () => {
         {categories.map((category) => {
           return (
             <li key={category.slug} className="cat_card">
-              <Link to={`/reviews/${category.slug}`}>
+              <Link to={`/categories/${category.slug}`}>
                 {/*could do something here like img="{slug}.png?"*/}
                 <h2 className="cat-card-title">{category.slug}</h2>
               </Link>

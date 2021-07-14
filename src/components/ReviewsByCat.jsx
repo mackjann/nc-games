@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 const ReviewByCat = () => {
   const [reviews, setReviews] = useState([]);
   const { category } = useParams();
-  console.log(category);
 
   useEffect(() => {
     getReviewsByCat(category).then((reviewsFromApi) => {

@@ -21,6 +21,11 @@ export const getReviewsById = async (reviewID) => {
 
 export const getReviewsByCat = async (category) => {
   const { data } = await reviewsApi.get(`/reviews?category=${category}`);
-  console.log(data.reviews);
   return data.reviews;
+};
+
+export const getComments = async (reviewID) => {
+  const { data } = await reviewsApi.get(`/reviews/${reviewID}/comments`);
+  console.log(data.comments);
+  return data.comments;
 };

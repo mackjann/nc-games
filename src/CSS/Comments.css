@@ -1,0 +1,16 @@
+.comment_list {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.comment_card {
+  display: flex;
+  position: relative;
+  border-width: 1px;
+  border-color: grey;
+  border-style: solid;
+  align-items: flex-start;
+  flex-direction: column;
+}
