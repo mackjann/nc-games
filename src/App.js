@@ -11,6 +11,7 @@ import ReviewById from "./components/ReviewById";
 import Categories from "./components/Categories";
 import About from "./components/About";
 import ChangeUser from "./components/ChangeUser";
+import ReviewsByCat from "./components/ReviewsByCat";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route exact path="/reviews/:category">
+            <ReviewsByCat />
           </Route>
           <Route path="/reviews/:reviewID">
             <ReviewById />

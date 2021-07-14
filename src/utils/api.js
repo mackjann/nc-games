@@ -6,18 +6,21 @@ const reviewsApi = axios.create({
 
 export const getCategories = async () => {
   const { data } = await reviewsApi.get("/categories");
-  console.log(data.categories);
   return data.categories;
 };
 
 export const getReviews = async () => {
   const { data } = await reviewsApi.get("/reviews");
-  console.log(data);
   return data.reviews;
 };
 
 export const getReviewsById = async (reviewID) => {
   const { data } = await reviewsApi.get(`/reviews/${reviewID}`);
-  console.log(data.review);
   return data.review;
+};
+
+export const getReviewsByCat = async (category) => {
+  const { data } = await reviewsApi.get(`/reviews?category=${category}`);
+  console.log(data.reviews);
+  return data.reviews;
 };
