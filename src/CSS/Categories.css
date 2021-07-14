@@ -1,0 +1,8 @@
+.big_box {
+  display: flex;
+  position: relative;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

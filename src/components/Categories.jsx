@@ -12,7 +12,7 @@ const Categories = () => {
   }, []);
 
   return (
-    <div>
+    <div className="big_box">
       <h1>Categories</h1>
       <ul>
         {categories.map((category) => {

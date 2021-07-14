@@ -21,12 +21,14 @@ body {
   font-family: "segoe ui";
   min-width: 600px;
 }
+
 .nav {
   display: flex;
-  position: absolute;
+  position: fixed;
   height: 80px;
   width: 100vw;
   background-color: #464d77;
+  z-index: 1;
 }
 
 .nav-header {

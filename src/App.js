@@ -7,7 +7,6 @@ import Reviews from "./components/Reviews";
 import ReviewById from "./components/ReviewById";
 import Categories from "./components/Categories";
 import About from "./components/About";
-import Contact from "./components/Contact";
 import ChangeUser from "./components/ChangeUser";
 
 function App() {
@@ -30,9 +29,6 @@ function App() {
           </Route>
           <Route exact path="/about">
             <About />
-          </Route>
-          <Route exact path="/contact">
-            <Contact />
           </Route>
           <Route exact path="/change-user">
             <ChangeUser />

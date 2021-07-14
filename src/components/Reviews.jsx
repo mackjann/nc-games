@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { getReviews } from "../utils/api";
+import { Link } from "react-router-dom";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -12,13 +13,13 @@ const Reviews = () => {
   }, []);
 
   return (
-    <div className="row">
+    <div className="big_box">
       <h1 className="header_title">Reviews</h1>
       <ul className="review_list">
         {reviews.map((review) => {
           return (
             <div className="review_card">
-              <div className="column">
+              <Link to={`/reviews/${review.review_id}`}>
                 <li key={review.review_id}>
                   <img
                     className="review_img"
@@ -31,7 +32,7 @@ const Reviews = () => {
                   </p>
                   <p>Comments: 0 Likes: 0</p>
                 </li>
-              </div>
+              </Link>
             </div>
           );
         })}
