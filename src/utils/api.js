@@ -29,3 +29,8 @@ export const getComments = async (reviewID) => {
   console.log(data.comments);
   return data.comments;
 };
+
+export const getUsers = async () => {
+  const { data } = await reviewsApi.get();
+  return data;
+};
