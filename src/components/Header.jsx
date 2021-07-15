@@ -33,7 +33,7 @@ const Header = () => {
           <li>
             <Link to="/about">About</Link>
           </li>
-          Logged in as {user.username}
+          <li>Logged in as {user.username}</li>
           <ChangeUser />
         </ul>
       </div>

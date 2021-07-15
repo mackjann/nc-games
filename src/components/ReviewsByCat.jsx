@@ -32,7 +32,9 @@ const ReviewByCat = () => {
                   <p>
                     {review.owner} || {review.created_at}
                   </p>
-                  <p>Comments: 0 Likes: 0</p>
+                  <p>
+                    Comments: {review.comment_count} Likes: {review.votes}
+                  </p>
                 </li>
               </Link>
             </div>
