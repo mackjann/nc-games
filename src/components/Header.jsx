@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ChangeUser from "./ChangeUser";
 
 const Header = () => {
   return (
@@ -28,9 +29,7 @@ const Header = () => {
           <li>
             <Link to="/about">About</Link>
           </li>
-          <li>
-            <Link to="/change-user">Change User</Link>
-          </li>
+          <ChangeUser />
         </ul>
       </div>
     </div>

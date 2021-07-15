@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 const Expandable = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);

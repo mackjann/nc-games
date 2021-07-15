@@ -26,11 +26,11 @@ export const getReviewsByCat = async (category) => {
 
 export const getComments = async (reviewID) => {
   const { data } = await reviewsApi.get(`/reviews/${reviewID}/comments`);
-  console.log(data.comments);
   return data.comments;
 };
 
-export const getUsers = async () => {
-  const { data } = await reviewsApi.get();
-  return data;
+export const getUser = async (username) => {
+  const { data } = await reviewsApi.get(`/users/${username}`);
+  console.log(data);
+  return data.user;
 };
