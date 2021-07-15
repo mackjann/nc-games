@@ -1,18 +1,19 @@
 import React from "react";
 import { UserContext } from "../contexts/User";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getUser } from "../utils/api";
 import { Dropdown } from "react-bootstrap";
 import "../CSS/ChangeUser.css";
 
 const ChangeUser = () => {
+  const { newUser, setNewUser } = useState([]);
   const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     getUser(user).then((userFromApi) => {
-      setUser(userFromApi);
+      setNewUser(userFromApi);
     });
-  }, [user, setUser]);
+  }, [user, setNewUser]);
 
   console.log(user);
 
