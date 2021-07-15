@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ChangeUser from "./ChangeUser";
+import { UserContext } from "../contexts/User";
+import { useContext } from "react";
 
 const Header = () => {
+  const { user } = useContext(UserContext);
+
   return (
     <div class="nav">
       <input type="checkbox" id="nav-check"></input>
@@ -29,6 +33,7 @@ const Header = () => {
           <li>
             <Link to="/about">About</Link>
           </li>
+          Logged in as {user.username}
           <ChangeUser />
         </ul>
       </div>

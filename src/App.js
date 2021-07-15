@@ -13,12 +13,15 @@ import Reviews from "./components/Reviews";
 import ReviewById from "./components/ReviewById";
 import Categories from "./components/Categories";
 import About from "./components/About";
-import ChangeUser from "./components/ChangeUser";
 import ReviewsByCat from "./components/ReviewsByCat";
 import { UserContext } from "./contexts/User";
 
 function App() {
-  const [user, setUser] = useState("tickle122");
+  const [user, setUser] = useState({
+    username: "tickle122",
+    avatar_url: "Tom Tickle",
+    name: "https://www.spiritsurfers.net/monastery/wp-content/uploads/_41500270_mrtickle.jpg",
+  });
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
@@ -43,9 +46,6 @@ function App() {
             </Route>
             <Route exact path="/about">
               <About />
-            </Route>
-            <Route exact path="/change-user">
-              <ChangeUser />
             </Route>
           </Switch>
         </div>

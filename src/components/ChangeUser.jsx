@@ -6,52 +6,68 @@ import { Dropdown } from "react-bootstrap";
 import "../CSS/ChangeUser.css";
 
 const ChangeUser = () => {
-  const { newUser, setNewUser } = useState([]);
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
+  const [selectedUser, setSelectedUser] = useState("tickle122");
 
   useEffect(() => {
-    getUser(user).then((userFromApi) => {
-      setNewUser(userFromApi);
+    getUser(selectedUser).then((userFromApi) => {
+      setUser(userFromApi);
     });
-  }, [user, setNewUser]);
-
-  console.log(user);
+  }, [selectedUser]);
 
   return (
     <div>
-      <p>Logged in as: {user.username}</p>
       <Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
           Change User
         </Dropdown.Toggle>
 
         <Dropdown.Menu className="dropdown_list">
-          <Dropdown.Item onClick={setUser("tickle122")}>
+          <Dropdown.Item
+            onClick={() => {
+              setSelectedUser("tickle122");
+            }}
+          >
             tickle122
           </Dropdown.Item>
-          <Dropdown.Item onClick={setUser("grumpy19")}>grumpy19</Dropdown.Item>
-          <Dropdown.Item onClick={setUser("happyamy2016")}>
+          <Dropdown.Item
+            onClick={() => {
+              setSelectedUser("grumpy19");
+            }}
+          >
+            grumpy19
+          </Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => {
+              setSelectedUser("happyamy2016");
+            }}
+          >
             happyamy2016
           </Dropdown.Item>
-          <Dropdown.Item onClick={setUser("cooljmessy")}>
+          <Dropdown.Item
+            onClick={() => {
+              setSelectedUser("cooljmessy");
+            }}
+          >
             cooljmessy
           </Dropdown.Item>
-          <Dropdown.Item onClick={setUser("weegembump")}>
+          <Dropdown.Item
+            onClick={() => {
+              setSelectedUser("weegembump");
+            }}
+          >
             weegembump
           </Dropdown.Item>
-          <Dropdown.Item onClick={setUser("jessjelly")}>
+          <Dropdown.Item
+            onClick={() => {
+              setSelectedUser("jessjelly");
+            }}
+          >
             jessjelly
           </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     </div>
-
-    // <p>Logged in as: {user.username}</p>
-    // <div className="dropdown">Change User</div>
-    // <span></span>
-    // <div class="dropdown-content">
-    //   <p onClick={setUser(usersArr[0])}>{usersArr[0]}</p>
-    // </div>
   );
 };
 
