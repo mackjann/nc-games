@@ -1,14 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getReviewsById } from "../utils/api";
-import Expandable from "./Expandable";
-import { getComments } from "../utils/api";
+import { getReviewsById, getVotes, incVotes, getComments } from "../utils/api";
+import CommentToggle from "./CommentToggle";
 
 const ReviewById = () => {
   const [review, setReview] = useState([]);
   const { reviewID } = useParams();
   const [comments, setComments] = useState([]);
+  const [votes, setVotes] = useState(0);
 
   useEffect(() => {
     getReviewsById(reviewID).then((reviewsFromApi) => {
@@ -19,6 +19,12 @@ const ReviewById = () => {
   useEffect(() => {
     getComments(reviewID).then((commentsFromApi) => {
       setComments(commentsFromApi);
+    });
+  }, [reviewID]);
+
+  useEffect(() => {
+    getVotes(reviewID).then((votesFromApi) => {
+      setVotes(votesFromApi);
     });
   }, [reviewID]);
 
@@ -43,7 +49,7 @@ const ReviewById = () => {
               <p>{review.review_body}</p>
               <label>Votes: {review.votes}</label>
               <button>Upvote</button>
-              <Expandable>
+              <CommentToggle>
                 <ul className="comment_list">
                   {comments.map((comment) => {
                     return (
@@ -53,7 +59,8 @@ const ReviewById = () => {
                           <p>
                             Posted by {comment.author} at {comment.created_at}
                           </p>
-                          <p>Likes: {comment.votes}</p>
+                          <p>Likes: {votes}</p>
+                          <button onClick={incVotes}>Like</button>
                           <p>
                             {comment.owner} || {comment.created_at}{" "}
                           </p>
@@ -62,7 +69,7 @@ const ReviewById = () => {
                     );
                   })}
                 </ul>
-              </Expandable>
+              </CommentToggle>
             </li>
           </div>
         </div>

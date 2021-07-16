@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Expandable = ({ children }) => {
+const CommentToggle = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = () => {
@@ -17,4 +17,4 @@ const Expandable = ({ children }) => {
   );
 };
 
-export default Expandable;
+export default CommentToggle;

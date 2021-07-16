@@ -16,6 +16,7 @@ export const getReviews = async () => {
 
 export const getReviewsById = async (reviewID) => {
   const { data } = await reviewsApi.get(`/reviews/${reviewID}`);
+  console.log(data);
   return data.review;
 };
 
@@ -27,6 +28,17 @@ export const getReviewsByCat = async (category) => {
 export const getComments = async (reviewID) => {
   const { data } = await reviewsApi.get(`/reviews/${reviewID}/comments`);
   return data.comments;
+};
+
+export const getVotes = async (reviewID) => {
+  const { data } = await reviewsApi.get(`/reviews/${reviewID}`);
+  return data.review.votes;
+};
+
+export const incVotes = async (reviewID) => {
+  const { data } = await reviewsApi.patch(`/reviews/${reviewID}`), newReviewObject;
+
+  return data.review.votes;
 };
 
 export const getUser = async (username) => {
