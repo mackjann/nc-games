@@ -57,7 +57,7 @@ const ReviewById = () => {
                           </p>
                           <p>Likes: {comment.votes}</p>
                           <p>
-                            {comment.owner} || {comment.created_at}{" "}
+                            {comment.owner} || {comment.created_at}
                           </p>
                         </li>
                       </div>
