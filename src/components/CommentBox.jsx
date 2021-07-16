@@ -1,13 +1,15 @@
 import { UserContext } from "../contexts/User";
-import { postComment } from "../utils/api";
-import { useContext } from "react";
+import { postComment, getComments } from "../utils/api";
+import { useContext, useEffect, useState } from "react";
 
 const CommentBox = ({ reviewID, newComment, setNewComment }) => {
   const { user } = useContext(UserContext);
+  const [newCommentSubmitted, setNewCommentSubmitted] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     postComment(reviewID, user.username, newComment);
+    setNewCommentSubmitted(true);
   };
 
   return (

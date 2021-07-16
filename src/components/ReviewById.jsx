@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getReviewsById, getComments } from "../utils/api";
 import CommentToggle from "./CommentToggle";
-import CommentBox from "./PostComment";
+import CommentBox from "./CommentBox";
 import useVote from "../hooks/useVote";
 import Comment from "./Comment";
 import { user } from "../../../../backend/be-nc-games/node_modules/pg/lib/defaults";
@@ -14,6 +14,7 @@ const ReviewById = () => {
   const [comments, setComments] = useState([]);
   const { votes, incVotes, decVotes } = useVote(0);
   const [newComment, setNewComment] = useState([]);
+  const [newCommentSubmitted, setNewCommentSubmitted] = useState(false);
 
   useEffect(() => {
     getReviewsById(reviewID).then((reviewsFromApi) => {
@@ -25,7 +26,7 @@ const ReviewById = () => {
     getComments(reviewID).then((commentsFromApi) => {
       setComments(commentsFromApi);
     });
-  }, [reviewID]);
+  }, [reviewID, newCommentSubmitted]);
 
   console.log({ user });
 
