@@ -1,18 +1,19 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getReviewsById, getComments, patchVotes } from "../utils/api";
+import { getReviewsById, getComments } from "../utils/api";
 import CommentToggle from "./CommentToggle";
+import CommentBox from "./PostComment";
 import useVote from "../hooks/useVote";
-
 import Comment from "./Comment";
-import axios from "axios";
+import { user } from "../../../../backend/be-nc-games/node_modules/pg/lib/defaults";
 
 const ReviewById = () => {
   const [review, setReview] = useState([]);
   const { reviewID } = useParams();
   const [comments, setComments] = useState([]);
   const { votes, incVotes, decVotes } = useVote(0);
+  const [newComment, setNewComment] = useState([]);
 
   useEffect(() => {
     getReviewsById(reviewID).then((reviewsFromApi) => {
@@ -25,6 +26,8 @@ const ReviewById = () => {
       setComments(commentsFromApi);
     });
   }, [reviewID]);
+
+  console.log({ user });
 
   return (
     <div className="big_box">
@@ -48,6 +51,11 @@ const ReviewById = () => {
               <label>Votes: {review.votes + votes}</label>
               <button onClick={incVotes}>Like</button>
               <button onClick={decVotes}>Dislike</button>
+              <CommentBox
+                reviewID={review.review_id}
+                newComment={newComment}
+                setNewComment={setNewComment}
+              />
               <CommentToggle>
                 <ul className="comment_list">
                   {comments.map((comment) => {
