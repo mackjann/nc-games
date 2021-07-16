@@ -1,14 +1,15 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getReviewsById, getVotes, incVotes, getComments } from "../utils/api";
+import { getReviewsById, getComments, patchVotes } from "../utils/api";
 import CommentToggle from "./CommentToggle";
+import useVote from "../hooks/useVote";
 
 const ReviewById = () => {
   const [review, setReview] = useState([]);
   const { reviewID } = useParams();
   const [comments, setComments] = useState([]);
-  const [votes, setVotes] = useState(0);
+  const { votes, incVotes, decVotes } = useVote(0);
 
   useEffect(() => {
     getReviewsById(reviewID).then((reviewsFromApi) => {
@@ -19,12 +20,6 @@ const ReviewById = () => {
   useEffect(() => {
     getComments(reviewID).then((commentsFromApi) => {
       setComments(commentsFromApi);
-    });
-  }, [reviewID]);
-
-  useEffect(() => {
-    getVotes(reviewID).then((votesFromApi) => {
-      setVotes(votesFromApi);
     });
   }, [reviewID]);
 
@@ -47,8 +42,9 @@ const ReviewById = () => {
               </p>
               <p>Game designed by: {review.designer}</p>
               <p>{review.review_body}</p>
-              <label>Votes: {review.votes}</label>
-              <button>Upvote</button>
+              <label>Votes: {review.votes + votes}</label>
+              <button onClick={incVotes}>Like</button>
+              <button onClick={decVotes}>Dislike</button>
               <CommentToggle>
                 <ul className="comment_list">
                   {comments.map((comment) => {
@@ -59,8 +55,7 @@ const ReviewById = () => {
                           <p>
                             Posted by {comment.author} at {comment.created_at}
                           </p>
-                          <p>Likes: {votes}</p>
-                          <button onClick={incVotes}>Like</button>
+                          <p>Likes: {comment.votes}</p>
                           <p>
                             {comment.owner} || {comment.created_at}{" "}
                           </p>
