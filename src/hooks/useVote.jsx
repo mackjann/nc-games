@@ -1,18 +1,15 @@
-import { useEffect, useState } from "react";
-import { patchVotes } from "../utils/api";
+import { useState } from "react";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
 
 const useVote = (actualVote = 0) => {
   const [votes, setVotes] = useState(actualVote);
-  const [upvoted, setUpvoted] = useState(false);
-  const [downvoted, setDownvoted] = useState(false);
+
   const { reviewID } = useParams();
 
   const incVotes = () => {
-    if (upvoted === false) {
+    if (votes === 0 || votes === -1) {
       setVotes((currentVotes) => currentVotes + 1);
-      setUpvoted(true);
       axios.patch(
         `https://nc-games-server.herokuapp.com/api/reviews/${reviewID}`,
         {
@@ -23,9 +20,8 @@ const useVote = (actualVote = 0) => {
   };
 
   const decVotes = () => {
-    if (downvoted === false) {
+    if (votes === 0 || votes === 1) {
       setVotes((currentVotes) => currentVotes - 1);
-      setDownvoted(true);
       axios.patch(
         `https://nc-games-server.herokuapp.com/api/reviews/${reviewID}`,
         {

@@ -34,15 +34,6 @@ export const getVotes = async (reviewID) => {
   return data.review.votes;
 };
 
-export const patchVotes = async (reviewID) => {
-  const { data } = await reviewsApi.patch(`/reviews/${reviewID}`, {
-    inc_votes: 1,
-  });
-
-  console.log(data);
-  return data.review.votes;
-};
-
 export const getUser = async (username) => {
   const { data } = await reviewsApi.get(`/users/${username}`);
   return data.user;

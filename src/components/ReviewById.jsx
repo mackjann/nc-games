@@ -5,6 +5,9 @@ import { getReviewsById, getComments, patchVotes } from "../utils/api";
 import CommentToggle from "./CommentToggle";
 import useVote from "../hooks/useVote";
 
+import Comment from "./Comment";
+import axios from "axios";
+
 const ReviewById = () => {
   const [review, setReview] = useState([]);
   const { reviewID } = useParams();
@@ -48,20 +51,7 @@ const ReviewById = () => {
               <CommentToggle>
                 <ul className="comment_list">
                   {comments.map((comment) => {
-                    return (
-                      <div className="comment_card">
-                        <li key={comment.comment_id}>
-                          <p>{comment.body}</p>
-                          <p>
-                            Posted by {comment.author} at {comment.created_at}
-                          </p>
-                          <p>Likes: {comment.votes}</p>
-                          <p>
-                            {comment.owner} || {comment.created_at}
-                          </p>
-                        </li>
-                      </div>
-                    );
+                    return <Comment comment={comment} />;
                   })}
                 </ul>
               </CommentToggle>
